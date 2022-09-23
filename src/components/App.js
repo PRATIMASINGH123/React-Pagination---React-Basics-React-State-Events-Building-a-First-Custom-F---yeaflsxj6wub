@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/App.css';
 import Loader from './Loader';
 import PostList from './PostList';
-import fetchPosts from '../api/fetchPosts';
+// import fetchPosts from '../api/fetchPosts';
 import PaginationButtonsList from './PaginationButtonsList';
 const App = () => {
     const [posts, setPosts] = useState([]);
@@ -16,8 +16,9 @@ const App = () => {
   useEffect(() => {
     const getData = async (page, limit) => {
       setLoading(true);
-      const data = await fetchPosts(page, limit);
-      setPosts(data);
+      const data = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`)
+      const res = await data.json()
+      setPosts(res);
       setLoading(false)
     }
     getData(page, 5);
