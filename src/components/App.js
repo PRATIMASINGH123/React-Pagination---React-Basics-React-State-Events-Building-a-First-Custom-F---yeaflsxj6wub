@@ -13,6 +13,7 @@ const App = () => {
       setPage(pageNumber);
     }
 
+      hii
   useEffect(() => {
     const getData = async (page, limit) => {
       setLoading(true);
